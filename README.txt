@@ -1,15 +1,11 @@
-    <section class="main-content ">
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to Influut.js!</h3>
+**Welcome to Influut.js!**
 
-        <p>This is the demopage of Influut.js. A Javascript Framework by <a href="https://github.com/brechtknecht" class="user-mention">@brechtknecht</a>. It gives you the easy ability to add cool color transition effects to your websites or projects.</p>
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to install Influut.js</h3>
+This is the demopage of Influut.js. A Javascript Framework by <a href="https://github.com/brechtknecht" class="user-mention">@brechtknecht</a>. It gives you the easy ability to add cool color transition effects to your websites or projects.
 
-        <p>
-            You just add Influut.js above your body-closing tag and you're ready to go. There are two possible ways. I recommend you the remote implementation, so you'll keep up to date. Influut.js requires the newest Version of jQuery.
-        </p>
-        <pre>&lt;script src="https://raw.githubusercontent.com/brechtknecht/influut.js/master/js/index.js"&gt;&lt;/script&gt;</pre>
+*How to install Influut.js*
+You just add Influut.js above your body-closing tag and you're ready to go. There are two possible ways. I recommend you the remote implementation, so you'll keep up to date. Influut.js requires the newest Version of jQuery.
+
+Ich
         <p> Alternatively you can download Influut.js from the repository and import it by yourself.</p>
         <pre>&lt;script src="js/influut.js"&gt;&lt;/script&gt;</pre>
         
