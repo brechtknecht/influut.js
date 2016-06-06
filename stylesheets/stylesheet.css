@@ -253,3 +253,13 @@ a {
     background-repeat: no-repeat;
     background-position: 50% 50%;
 }
+
+.inf{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    vertical-align: middle;
+}

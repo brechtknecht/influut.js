@@ -112,8 +112,10 @@ function influutMiddle(elementID) {
         var colorOpacity = (windowPositionBottom - objectOffset) / $(window).height();
 
         if (windowPositionBottom > objectOffset) {
-            if (windowPositionTop > objectOffset) {
-                return;
+            colorOpacity = colorOpacity * 2;
+            if (windowPositionTop + $(window).height()/2  > objectOffset) {
+                var temp = (colorOpacity - 1);
+                colorOpacity = 1 - temp;
             }
             $(influutArray[elementID]).css('background', 'rgba(' + influutArray[elementID + 2].r + ',' + influutArray[elementID + 2].g + ',' + influutArray[elementID + 2].b + ',' + colorOpacity + ')');
         }
