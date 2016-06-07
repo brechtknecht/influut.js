@@ -2,12 +2,22 @@
 var influutSelector = 'inf';
 var influutDivs = jQuery.makeArray($('.' + influutSelector + '').toArray());
 var influutArray = jQuery.makeArray();
+var windowPositionTop;
 
 $(document).ready(function () {
+    scroll();
     pushToInfluutArray(getInfluutColors(), getInfluutType());
     influutColorHandler();
     debug();
 });
+
+
+//function got fired on scroll to change global scroll dependency variables
+function scroll() {
+    $(window).scroll(function () {
+        windowPositionTop = $(window).scrollTop();
+    });
+}
 
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -33,6 +43,9 @@ function getInfluutType() {
         if ($(this).hasClass('middle')) {
             influutTypes.push('middle');
         }
+        if ($(this).hasClass('outgoing')) {
+            influutTypes.push('outgoing');
+        }
 
     });
     return influutTypes;
@@ -51,6 +64,7 @@ function getInfluutColors() {
     });
     return colors;
 }
+
 //pushes All information into array
 // 1. div reference - cell 1
 // 2. influut type - cell 2
@@ -78,6 +92,8 @@ function influutColorHandler() {
         var currentElement = i;
         var currentElementType = influutArray[i + 1];
 
+        console.log(currentElementType);
+
         if (currentElementType == 'incoming') {
             influutIncoming(currentElement);
         }
@@ -85,12 +101,15 @@ function influutColorHandler() {
         if (currentElementType == 'middle') {
             influutMiddle(currentElement);
         }
+
+        if (currentElementType == 'outgoing') {
+            influutOutgoing(currentElement);
+        }
     }
 }
 
 function influutIncoming(elementID) {
     $(window).scroll(function () {
-        var windowPositionTop = $(window).scrollTop();
         var windowPositionBottom = windowPositionTop + $(window).height();
         var objectOffset = $(influutArray[elementID]).offset().top;
         var colorOpacity = (windowPositionBottom - objectOffset) / $(window).height();
@@ -100,24 +119,43 @@ function influutIncoming(elementID) {
                 return;
             }
             $(influutArray[elementID]).css('background', 'rgba(' + influutArray[elementID + 2].r + ',' + influutArray[elementID + 2].g + ',' + influutArray[elementID + 2].b + ',' + colorOpacity + ')');
+        } else {
+            return;
         }
     });
 }
 
 function influutMiddle(elementID) {
     $(window).scroll(function () {
-        var windowPositionTop = $(window).scrollTop();
         var windowPositionBottom = windowPositionTop + $(window).height();
         var objectOffset = $(influutArray[elementID]).offset().top;
         var colorOpacity = (windowPositionBottom - objectOffset) / $(window).height();
 
         if (windowPositionBottom > objectOffset) {
             colorOpacity = colorOpacity * 2;
-            if (windowPositionTop + $(window).height()/2  > objectOffset) {
+            if (windowPositionTop + $(window).height() / 2 > objectOffset) {
                 var temp = (colorOpacity - 1);
                 colorOpacity = 1 - temp;
             }
             $(influutArray[elementID]).css('background', 'rgba(' + influutArray[elementID + 2].r + ',' + influutArray[elementID + 2].g + ',' + influutArray[elementID + 2].b + ',' + colorOpacity + ')');
+        } else {
+            return;
+        }
+    });
+}
+
+function influutOutgoing(elementID) {
+    $(window).scroll(function () {
+        var windowPositionBottom = windowPositionTop + $(window).height();
+        var objectOffset = $(influutArray[elementID]).offset().top;
+        var colorOpacity = -1 * ((windowPositionBottom - objectOffset) / $(window).height() - 1);
+        if (windowPositionBottom > objectOffset) {
+            if (windowPositionTop > objectOffset) {
+                return;
+            }
+            $(influutArray[elementID]).css('background', 'rgba(' + influutArray[elementID + 2].r + ',' + influutArray[elementID + 2].g + ',' + influutArray[elementID + 2].b + ',' + colorOpacity + ')');
+        } else {
+            return;
         }
     });
 }
