@@ -243,3 +243,23 @@ a {
 @media screen and (max-width: 42em) {
   .site-footer {
     font-size: 0.9rem; } }
+
+.project-hero{
+    margin: 0 auto;
+    width: auto;
+    height: 200px;
+    background: url('../img/logo.png');
+    background-size: 300px;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.inf{
+    margin-top: 24px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    vertical-align: middle;
+}
